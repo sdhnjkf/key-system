@@ -29,7 +29,7 @@ titleBarCorner.Parent = titleBar
 
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 1, 0)
-title.Text = "Universal Key System Script"
+title.Text = "Zuni's Hub"
 title.TextColor3 = Color3.fromRGB(220, 220, 220)  -- Dark white
 title.BackgroundTransparency = 1
 title.Font = Enum.Font.GothamBold
