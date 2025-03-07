@@ -8,7 +8,8 @@ frame.Size = UDim2.new(0, 350, 0, 180)
 frame.Position = UDim2.new(0.5, -175, 0.5, -90)
 frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 frame.BackgroundTransparency = 0.1
-frame.BorderSizePixel = 0
+frame.BorderSizePixel = 2
+frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
 frame.Parent = screenGui
 
 local uiCorner = Instance.new("UICorner")
@@ -21,6 +22,8 @@ title.Position = UDim2.new(0, 0, 0, -35)
 title.Text = "Universal Key System Script"
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+title.BorderSizePixel = 2
+title.BorderColor3 = Color3.fromRGB(255, 255, 255)
 title.Font = Enum.Font.GothamBold
 title.TextSize = 18
 title.Parent = frame
@@ -29,12 +32,20 @@ local titleCorner = Instance.new("UICorner")
 titleCorner.CornerRadius = UDim.new(0, 10)
 titleCorner.Parent = title
 
+local topLine = Instance.new("Frame")
+topLine.Size = UDim2.new(1, 0, 0, 2)
+topLine.Position = UDim2.new(0, 0, 0, -2)
+topLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+topLine.Parent = title
+
 local KeySystem = Instance.new("TextBox")
 KeySystem.Size = UDim2.new(1, -20, 0.25, 0)
 KeySystem.Position = UDim2.new(0, 10, 0.15, 0)
 KeySystem.Text = "Enter the Key"
 KeySystem.TextColor3 = Color3.fromRGB(200, 200, 200)
 KeySystem.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+KeySystem.BorderSizePixel = 2
+KeySystem.BorderColor3 = Color3.fromRGB(255, 255, 255)
 KeySystem.Font = Enum.Font.Gotham
 KeySystem.TextSize = 14
 KeySystem.ClearTextOnFocus = true
@@ -50,6 +61,8 @@ SubmitButton.Position = UDim2.new(0.05, 0, 0.5, 0)
 SubmitButton.Text = "Submit"
 SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 SubmitButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+SubmitButton.BorderSizePixel = 2
+SubmitButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
 SubmitButton.Font = Enum.Font.GothamBold
 SubmitButton.TextSize = 14
 SubmitButton.Parent = frame
@@ -64,6 +77,8 @@ GetKeyButton.Position = UDim2.new(0.5, 0, 0.5, 0)
 GetKeyButton.Text = "Get Key"
 GetKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 GetKeyButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+GetKeyButton.BorderSizePixel = 2
+GetKeyButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
 GetKeyButton.Font = Enum.Font.GothamBold
 GetKeyButton.TextSize = 14
 GetKeyButton.Parent = frame
@@ -78,6 +93,8 @@ CloseButton.Position = UDim2.new(1, -35, 0, 5)
 CloseButton.Text = "X"
 CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CloseButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+CloseButton.BorderSizePixel = 2
+CloseButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
 CloseButton.Font = Enum.Font.GothamBold
 CloseButton.TextSize = 16
 CloseButton.Parent = frame
@@ -93,7 +110,7 @@ end)
 SubmitButton.MouseButton1Click:Connect(function()
     if KeySystem.Text == "FREE_njkgb78ghokl" then   
         screenGui:Destroy()
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/sdhnjkf/ww/refs/heads/main/w'),true))()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/nmfhidsbgjksdbghk/ghkdsdfsjkftyukdrtu/refs/heads/main/hkdgcyhik'),true))()
     end
 end)
 
