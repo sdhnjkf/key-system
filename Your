@@ -108,7 +108,7 @@ CloseButton.MouseButton1Click:Connect(function()
     screenGui:Destroy()
 end)
 
--- Error Message Frame
+-- Error Message Frame (Invalid Key)
 local errorMessageFrame = Instance.new("TextLabel")
 errorMessageFrame.Size = UDim2.new(1, 0, 0, 40)
 errorMessageFrame.Position = UDim2.new(0, 0, -0.2, 0)
@@ -124,28 +124,46 @@ local errorMessageCorner = Instance.new("UICorner")
 errorMessageCorner.CornerRadius = UDim.new(0, 10)
 errorMessageCorner.Parent = errorMessageFrame
 
+-- Success Message Frame (Key Successful)
+local successMessageFrame = Instance.new("TextLabel")
+successMessageFrame.Size = UDim2.new(1, 0, 0, 40)
+successMessageFrame.Position = UDim2.new(0, 0, -0.2, 0)
+successMessageFrame.Text = "Key Successful"
+successMessageFrame.TextColor3 = Color3.fromRGB(0, 255, 0)  -- Green text
+successMessageFrame.BackgroundTransparency = 1
+successMessageFrame.Font = Enum.Font.GothamBold
+successMessageFrame.TextSize = 18
+successMessageFrame.Visible = false
+successMessageFrame.Parent = screenGui
+
+local successMessageCorner = Instance.new("UICorner")
+successMessageCorner.CornerRadius = UDim.new(0, 10)
+successMessageCorner.Parent = successMessageFrame
+
 -- Submit Button Functionality
 SubmitButton.MouseButton1Click:Connect(function()
     if KeySystem.Text == "FREE_njkgb78ghokl" then   
-        -- Destroy the ScreenGui first
+        -- Show success message
+        successMessageFrame.Visible = true
+        successMessageFrame.Position = UDim2.new(0, 0, 0, 0)
+        
+        -- Hide the success message after 3 seconds
+        wait(3)
+        successMessageFrame.Visible = false
+        
+        -- Destroy the GUI before loading the script
+        wait(0.1)
         screenGui:Destroy()
         
-        -- Add a slight delay before loading the external script
-        wait(0.1)
-        
-        -- Now load the script
+        -- Load the external script after destroying the GUI
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/sdhnjkf/ww/refs/heads/main/w'), true))()
     else
         -- Show error message if key is invalid
         errorMessageFrame.Visible = true
-        
-        -- Move the error message from the top of the screen down to the top
         errorMessageFrame.Position = UDim2.new(0, 0, 0, 0)
         
-        -- Wait for 3 seconds before fading out
+        -- Wait for 3 seconds before fading out the error message
         wait(3)
-        
-        -- Fade out the error message
         errorMessageFrame.Visible = false
     end
 end)
