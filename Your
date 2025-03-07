@@ -99,7 +99,7 @@ SubmitButton.MouseButton1Click:Connect(function()
     if KeySystem == "FREE_njkgb78ghokl" then   
 screenGui:Destroy()
 
---loadstring(game:HttpGet(('https://raw.githubusercontent.com/sdhnjkf/ww/refs/heads/main/w'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/sdhnjkf/ww/refs/heads/main/w'),true))()
   
   end
 end)
