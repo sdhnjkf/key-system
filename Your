@@ -3,101 +3,109 @@
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
+-- Main Frame
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 350, 0, 180)
-frame.Position = UDim2.new(0.5, -175, 0.5, -90)
-frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-frame.BackgroundTransparency = 0.1
-frame.BorderSizePixel = 2
-frame.BorderColor3 = Color3.fromRGB(255, 255, 255)
+frame.Size = UDim2.new(0, 400, 0, 220)
+frame.Position = UDim2.new(0.5, -200, 0.5, -110)
+frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+frame.BackgroundTransparency = 0.2
+frame.BorderSizePixel = 0
 frame.Parent = screenGui
 
 local uiCorner = Instance.new("UICorner")
-uiCorner.CornerRadius = UDim.new(0, 10)
+uiCorner.CornerRadius = UDim.new(0, 12)
 uiCorner.Parent = frame
 
+-- Top Title Bar
+local titleBar = Instance.new("Frame")
+titleBar.Size = UDim2.new(1, 0, 0, 40)
+titleBar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+titleBar.Parent = frame
+
+titleBar.BorderSizePixel = 0
+
+local titleBarCorner = Instance.new("UICorner")
+titleBarCorner.CornerRadius = UDim.new(0, 12)
+titleBarCorner.Parent = titleBar
+
 local title = Instance.new("TextLabel")
-title.Size = UDim2.new(1, 0, 0, 35)
-title.Position = UDim2.new(0, 0, 0, -35)
+title.Size = UDim2.new(1, 0, 1, 0)
 title.Text = "Universal Key System Script"
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
-title.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-title.BorderSizePixel = 2
-title.BorderColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1
 title.Font = Enum.Font.GothamBold
 title.TextSize = 18
-title.Parent = frame
+title.Parent = titleBar
 
-local titleCorner = Instance.new("UICorner")
-titleCorner.CornerRadius = UDim.new(0, 10)
-titleCorner.Parent = title
-
+-- White Accent Lines
 local topLine = Instance.new("Frame")
 topLine.Size = UDim2.new(1, 0, 0, 2)
-topLine.Position = UDim2.new(0, 0, 0, -2)
+topLine.Position = UDim2.new(0, 0, 1, 0)
 topLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-topLine.Parent = title
+topLine.Parent = titleBar
 
+local bottomLine = Instance.new("Frame")
+bottomLine.Size = UDim2.new(1, 0, 0, 2)
+bottomLine.Position = UDim2.new(0, 0, 1, -2)
+bottomLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+bottomLine.Parent = frame
+
+-- Key Input Box
 local KeySystem = Instance.new("TextBox")
-KeySystem.Size = UDim2.new(1, -20, 0.25, 0)
-KeySystem.Position = UDim2.new(0, 10, 0.15, 0)
+KeySystem.Size = UDim2.new(1, -40, 0.25, 0)
+KeySystem.Position = UDim2.new(0, 20, 0.3, 0)
 KeySystem.Text = "Enter the Key"
-KeySystem.TextColor3 = Color3.fromRGB(200, 200, 200)
+KeySystem.TextColor3 = Color3.fromRGB(220, 220, 220)
 KeySystem.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-KeySystem.BorderSizePixel = 2
-KeySystem.BorderColor3 = Color3.fromRGB(255, 255, 255)
 KeySystem.Font = Enum.Font.Gotham
 KeySystem.TextSize = 14
 KeySystem.ClearTextOnFocus = true
 KeySystem.Parent = frame
 
 local keyCorner = Instance.new("UICorner")
-keyCorner.CornerRadius = UDim.new(0, 5)
+keyCorner.CornerRadius = UDim.new(0, 8)
 keyCorner.Parent = KeySystem
 
+-- Submit Button
 local SubmitButton = Instance.new("TextButton")
 SubmitButton.Size = UDim2.new(0.45, 0, 0.25, 0)
-SubmitButton.Position = UDim2.new(0.05, 0, 0.5, 0)
+SubmitButton.Position = UDim2.new(0.05, 0, 0.6, 0)
 SubmitButton.Text = "Submit"
 SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-SubmitButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-SubmitButton.BorderSizePixel = 2
-SubmitButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
+SubmitButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 SubmitButton.Font = Enum.Font.GothamBold
 SubmitButton.TextSize = 14
 SubmitButton.Parent = frame
 
 local submitCorner = Instance.new("UICorner")
-submitCorner.CornerRadius = UDim.new(0, 5)
+submitCorner.CornerRadius = UDim.new(0, 8)
 submitCorner.Parent = SubmitButton
 
+-- Get Key Button
 local GetKeyButton = Instance.new("TextButton")
 GetKeyButton.Size = UDim2.new(0.45, 0, 0.25, 0)
-GetKeyButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+GetKeyButton.Position = UDim2.new(0.5, 0, 0.6, 0)
 GetKeyButton.Text = "Get Key"
 GetKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-GetKeyButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-GetKeyButton.BorderSizePixel = 2
-GetKeyButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
+GetKeyButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 GetKeyButton.Font = Enum.Font.GothamBold
 GetKeyButton.TextSize = 14
 GetKeyButton.Parent = frame
 
 local getKeyCorner = Instance.new("UICorner")
-getKeyCorner.CornerRadius = UDim.new(0, 5)
+getKeyCorner.CornerRadius = UDim.new(0, 8)
 getKeyCorner.Parent = GetKeyButton
 
+-- Close Button
 local CloseButton = Instance.new("TextButton")
 CloseButton.Size = UDim2.new(0, 30, 0, 30)
 CloseButton.Position = UDim2.new(1, -35, 0, 5)
 CloseButton.Text = "X"
 CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CloseButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-CloseButton.BorderSizePixel = 2
-CloseButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
 CloseButton.Font = Enum.Font.GothamBold
 CloseButton.TextSize = 16
-CloseButton.Parent = frame
+CloseButton.Parent = titleBar
 
 local closeCorner = Instance.new("UICorner")
 closeCorner.CornerRadius = UDim.new(0, 5)
