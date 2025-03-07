@@ -7,7 +7,7 @@ screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 400, 0, 220)
 frame.Position = UDim2.new(0.5, -200, 0.5, -110)
-frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 frame.BackgroundTransparency = 0.1
 frame.BorderSizePixel = 0
 frame.Parent = screenGui
@@ -30,7 +30,7 @@ titleBarCorner.Parent = titleBar
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 1, 0)
 title.Text = "Universal Key System Script"
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextColor3 = Color3.fromRGB(220, 220, 220)  -- Dark white
 title.BackgroundTransparency = 1
 title.Font = Enum.Font.GothamBold
 title.TextSize = 18
@@ -48,8 +48,8 @@ local KeySystem = Instance.new("TextBox")
 KeySystem.Size = UDim2.new(1, -40, 0.25, 0)
 KeySystem.Position = UDim2.new(0, 20, 0.3, 0)
 KeySystem.Text = "Enter the Key"
-KeySystem.TextColor3 = Color3.fromRGB(220, 220, 220)
-KeySystem.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+KeySystem.TextColor3 = Color3.fromRGB(200, 200, 200)  -- Slightly dark white
+KeySystem.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 KeySystem.Font = Enum.Font.Gotham
 KeySystem.TextSize = 14
 KeySystem.ClearTextOnFocus = true
@@ -65,7 +65,7 @@ SubmitButton.Size = UDim2.new(0.45, 0, 0.25, 0)
 SubmitButton.Position = UDim2.new(0.05, 0, 0.6, 0)
 SubmitButton.Text = "Submit"
 SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+SubmitButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 SubmitButton.Font = Enum.Font.GothamBold
 SubmitButton.TextSize = 14
 SubmitButton.Parent = frame
@@ -80,7 +80,7 @@ GetKeyButton.Size = UDim2.new(0.45, 0, 0.25, 0)
 GetKeyButton.Position = UDim2.new(0.5, 0, 0.6, 0)
 GetKeyButton.Text = "Get Key"
 GetKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-GetKeyButton.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
+GetKeyButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 GetKeyButton.Font = Enum.Font.GothamBold
 GetKeyButton.TextSize = 14
 GetKeyButton.Parent = frame
@@ -95,7 +95,7 @@ CloseButton.Size = UDim2.new(0, 30, 0, 30)
 CloseButton.Position = UDim2.new(1, -35, 0, 5)
 CloseButton.Text = "X"
 CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+CloseButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
 CloseButton.Font = Enum.Font.GothamBold
 CloseButton.TextSize = 16
 CloseButton.Parent = titleBar
@@ -108,23 +108,23 @@ CloseButton.MouseButton1Click:Connect(function()
     screenGui:Destroy()
 end)
 
--- Animations for the buttons
-SubmitButton.MouseEnter:Connect(function()
-    SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 180, 0)
-end)
+-- Error Message Frame
+local errorMessageFrame = Instance.new("TextLabel")
+errorMessageFrame.Size = UDim2.new(1, 0, 0, 40)
+errorMessageFrame.Position = UDim2.new(0, 0, -0.2, 0)
+errorMessageFrame.Text = "Invalid key, please get key"
+errorMessageFrame.TextColor3 = Color3.fromRGB(255, 0, 0)  -- Bright red text
+errorMessageFrame.BackgroundTransparency = 1
+errorMessageFrame.Font = Enum.Font.GothamBold
+errorMessageFrame.TextSize = 18
+errorMessageFrame.Visible = false
+errorMessageFrame.Parent = screenGui
 
-SubmitButton.MouseLeave:Connect(function()
-    SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-end)
+local errorMessageCorner = Instance.new("UICorner")
+errorMessageCorner.CornerRadius = UDim.new(0, 10)
+errorMessageCorner.Parent = errorMessageFrame
 
-GetKeyButton.MouseEnter:Connect(function()
-    GetKeyButton.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
-end)
-
-GetKeyButton.MouseLeave:Connect(function()
-    GetKeyButton.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
-end)
-
+-- Submit Button Functionality
 SubmitButton.MouseButton1Click:Connect(function()
     if KeySystem.Text == "FREE_njkgb78ghokl" then   
         -- Destroy the ScreenGui first
@@ -135,5 +135,22 @@ SubmitButton.MouseButton1Click:Connect(function()
         
         -- Now load the script
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/sdhnjkf/ww/refs/heads/main/w'), true))()
+    else
+        -- Show error message if key is invalid
+        errorMessageFrame.Visible = true
+        
+        -- Move the error message from the top of the screen down to the top
+        errorMessageFrame.Position = UDim2.new(0, 0, 0, 0)
+        
+        -- Wait for 3 seconds before fading out
+        wait(3)
+        
+        -- Fade out the error message
+        errorMessageFrame.Visible = false
     end
+end)
+
+-- Get Key Button Functionality
+GetKeyButton.MouseButton1Click:Connect(function()
+    setclipboard("https://loot-link.com/s?UPUqTpjo")
 end)
