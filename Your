@@ -1,4 +1,4 @@
--- Made BY Mr.Alegator
+-- Made by Mr.Alegator
 
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -7,25 +7,24 @@ screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 400, 0, 220)
 frame.Position = UDim2.new(0.5, -200, 0.5, -110)
-frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-frame.BackgroundTransparency = 0.2
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.BackgroundTransparency = 0.1
 frame.BorderSizePixel = 0
 frame.Parent = screenGui
 
 local uiCorner = Instance.new("UICorner")
-uiCorner.CornerRadius = UDim.new(0, 12)
+uiCorner.CornerRadius = UDim.new(0, 15)
 uiCorner.Parent = frame
 
--- Top Title Bar
+-- Top Title Bar with Gradient
 local titleBar = Instance.new("Frame")
 titleBar.Size = UDim2.new(1, 0, 0, 40)
 titleBar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+titleBar.BorderSizePixel = 0
 titleBar.Parent = frame
 
-titleBar.BorderSizePixel = 0
-
 local titleBarCorner = Instance.new("UICorner")
-titleBarCorner.CornerRadius = UDim.new(0, 12)
+titleBarCorner.CornerRadius = UDim.new(0, 15)
 titleBarCorner.Parent = titleBar
 
 local title = Instance.new("TextLabel")
@@ -44,26 +43,20 @@ topLine.Position = UDim2.new(0, 0, 1, 0)
 topLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 topLine.Parent = titleBar
 
-local bottomLine = Instance.new("Frame")
-bottomLine.Size = UDim2.new(1, 0, 0, 2)
-bottomLine.Position = UDim2.new(0, 0, 1, -2)
-bottomLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-bottomLine.Parent = frame
-
 -- Key Input Box
 local KeySystem = Instance.new("TextBox")
 KeySystem.Size = UDim2.new(1, -40, 0.25, 0)
 KeySystem.Position = UDim2.new(0, 20, 0.3, 0)
 KeySystem.Text = "Enter the Key"
 KeySystem.TextColor3 = Color3.fromRGB(220, 220, 220)
-KeySystem.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+KeySystem.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 KeySystem.Font = Enum.Font.Gotham
 KeySystem.TextSize = 14
 KeySystem.ClearTextOnFocus = true
 KeySystem.Parent = frame
 
 local keyCorner = Instance.new("UICorner")
-keyCorner.CornerRadius = UDim.new(0, 8)
+keyCorner.CornerRadius = UDim.new(0, 10)
 keyCorner.Parent = KeySystem
 
 -- Submit Button
@@ -72,13 +65,13 @@ SubmitButton.Size = UDim2.new(0.45, 0, 0.25, 0)
 SubmitButton.Position = UDim2.new(0.05, 0, 0.6, 0)
 SubmitButton.Text = "Submit"
 SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-SubmitButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
 SubmitButton.Font = Enum.Font.GothamBold
 SubmitButton.TextSize = 14
 SubmitButton.Parent = frame
 
 local submitCorner = Instance.new("UICorner")
-submitCorner.CornerRadius = UDim.new(0, 8)
+submitCorner.CornerRadius = UDim.new(0, 12)
 submitCorner.Parent = SubmitButton
 
 -- Get Key Button
@@ -87,13 +80,13 @@ GetKeyButton.Size = UDim2.new(0.45, 0, 0.25, 0)
 GetKeyButton.Position = UDim2.new(0.5, 0, 0.6, 0)
 GetKeyButton.Text = "Get Key"
 GetKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-GetKeyButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+GetKeyButton.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
 GetKeyButton.Font = Enum.Font.GothamBold
 GetKeyButton.TextSize = 14
 GetKeyButton.Parent = frame
 
 local getKeyCorner = Instance.new("UICorner")
-getKeyCorner.CornerRadius = UDim.new(0, 8)
+getKeyCorner.CornerRadius = UDim.new(0, 12)
 getKeyCorner.Parent = GetKeyButton
 
 -- Close Button
@@ -102,17 +95,34 @@ CloseButton.Size = UDim2.new(0, 30, 0, 30)
 CloseButton.Position = UDim2.new(1, -35, 0, 5)
 CloseButton.Text = "X"
 CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CloseButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 CloseButton.Font = Enum.Font.GothamBold
 CloseButton.TextSize = 16
 CloseButton.Parent = titleBar
 
 local closeCorner = Instance.new("UICorner")
-closeCorner.CornerRadius = UDim.new(0, 5)
+closeCorner.CornerRadius = UDim.new(0, 6)
 closeCorner.Parent = CloseButton
 
 CloseButton.MouseButton1Click:Connect(function()
     screenGui:Destroy()
+end)
+
+-- Animations for the buttons
+SubmitButton.MouseEnter:Connect(function()
+    SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 180, 0)
+end)
+
+SubmitButton.MouseLeave:Connect(function()
+    SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+end)
+
+GetKeyButton.MouseEnter:Connect(function()
+    GetKeyButton.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
+end)
+
+GetKeyButton.MouseLeave:Connect(function()
+    GetKeyButton.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
 end)
 
 SubmitButton.MouseButton1Click:Connect(function()
