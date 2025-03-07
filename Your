@@ -5,8 +5,8 @@ screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 -- Main Frame
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 400, 0, 220)
-frame.Position = UDim2.new(0.5, -200, 0.5, -110)
+frame.Size = UDim2.new(0, 350, 0, 180)  -- Reduced size of the main frame
+frame.Position = UDim2.new(0.5, -175, 0.5, -90)  -- Adjusted position
 frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 frame.BackgroundTransparency = 0.1
 frame.BorderSizePixel = 0
@@ -29,7 +29,7 @@ titleBarCorner.Parent = titleBar
 
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 1, 0)
-title.Text = "Zuni's Hub Testing"
+title.Text = "Universal Key System Script"
 title.TextColor3 = Color3.fromRGB(220, 220, 220)  -- Dark white
 title.BackgroundTransparency = 1
 title.Font = Enum.Font.GothamBold
@@ -110,8 +110,8 @@ end)
 
 -- Error Message Frame (Invalid Key)
 local errorMessageFrame = Instance.new("Frame")
-errorMessageFrame.Size = UDim2.new(0, 350, 0, 40)
-errorMessageFrame.Position = UDim2.new(0.5, -175, 0, 10)
+errorMessageFrame.Size = UDim2.new(0, 300, 0, 30)  -- Reduced size of the error frame
+errorMessageFrame.Position = UDim2.new(0.5, -150, 0, 10)
 errorMessageFrame.BackgroundColor3 = Color3.fromRGB(200, 0, 0)  -- Red background
 errorMessageFrame.BorderSizePixel = 0
 errorMessageFrame.Visible = false
@@ -123,17 +123,17 @@ errorMessageText.Text = "Invalid key, please get key 🔑"
 errorMessageText.TextColor3 = Color3.fromRGB(255, 255, 255)  -- White text
 errorMessageText.BackgroundTransparency = 1
 errorMessageText.Font = Enum.Font.GothamBold
-errorMessageText.TextSize = 16
+errorMessageText.TextSize = 14  -- Smaller text size
 errorMessageText.Parent = errorMessageFrame
 
 local errorMessageCorner = Instance.new("UICorner")
-errorMessageCorner.CornerRadius = UDim.new(0, 20)
+errorMessageCorner.CornerRadius = UDim.new(0, 15)
 errorMessageCorner.Parent = errorMessageFrame
 
 -- Success Message Frame (Key Successful)
 local successMessageFrame = Instance.new("Frame")
-successMessageFrame.Size = UDim2.new(0, 350, 0, 40)
-successMessageFrame.Position = UDim2.new(0.5, -175, 0, 10)
+successMessageFrame.Size = UDim2.new(0, 300, 0, 30)  -- Reduced size of the success frame
+successMessageFrame.Position = UDim2.new(0.5, -150, 0, 10)
 successMessageFrame.BackgroundColor3 = Color3.fromRGB(0, 255, 0)  -- Green background
 successMessageFrame.BorderSizePixel = 0
 successMessageFrame.Visible = false
@@ -145,37 +145,56 @@ successMessageText.Text = "Key Successful 🔑"
 successMessageText.TextColor3 = Color3.fromRGB(255, 255, 255)  -- White text
 successMessageText.BackgroundTransparency = 1
 successMessageText.Font = Enum.Font.GothamBold
-successMessageText.TextSize = 16
+successMessageText.TextSize = 14  -- Smaller text size
 successMessageText.Parent = successMessageFrame
 
 local successMessageCorner = Instance.new("UICorner")
-successMessageCorner.CornerRadius = UDim.new(0, 20)
+successMessageCorner.CornerRadius = UDim.new(0, 15)
 successMessageCorner.Parent = successMessageFrame
+
+-- Fading Function
+local function fadeIn(gui, duration)
+    gui.Visible = true
+    local startTime = tick()
+    local function update()
+        local elapsedTime = tick() - startTime
+        local transparency = math.clamp(elapsedTime / duration, 0, 1)
+        gui.BackgroundTransparency = 1 - transparency
+        for _, child in ipairs(gui:GetChildren()) do
+            if child:IsA("TextLabel") then
+                child.TextTransparency = 1 - transparency
+            end
+        end
+    end
+    while tick() - startTime < duration do
+        update()
+        game:GetService("RunService").Heartbeat:Wait()
+    end
+    update()
+end
 
 -- Submit Button Functionality
 SubmitButton.MouseButton1Click:Connect(function()
-    if KeySystem.Text == "FREE_njkgb78ghokl" then   
-        -- Show success message
-        successMessageFrame.Visible = true
-        successMessageFrame.Position = UDim2.new(0.5, -175, 0, 10)
-        
+    if KeySystem.Text == "FREE_njkgb78ghokl" then
+        -- Show success message with fade-in
+        fadeIn(successMessageFrame, 2)
+
         -- Hide the success message after 3 seconds
         wait(3)
         successMessageFrame.Visible = false
-        
+
         -- Destroy the GUI before loading the script
         wait(0.1)
         screenGui:Destroy()
-        
+
         -- Load the external script after destroying the GUI
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/sdhnjkf/ww/refs/heads/main/w'), true))()
     else
-        -- Show error message if key is invalid
-        errorMessageFrame.Visible = true
-        errorMessageFrame.Position = UDim2.new(0.5, -175, 0, 10)
-        
+        -- Show error message with fade-in
+        fadeIn(errorMessageFrame, 2)
+
         -- Wait for 3 seconds before fading out the error message
-        wait(1)
+        wait(3)
         errorMessageFrame.Visible = false
     end
 end)
@@ -184,3 +203,6 @@ end)
 GetKeyButton.MouseButton1Click:Connect(function()
     setclipboard("https://loot-link.com/s?UPUqTpjo")
 end)
+
+-- Fade-in for the main GUI
+fadeIn(frame, 2)
